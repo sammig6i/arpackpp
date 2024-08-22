@@ -17,7 +17,7 @@ CPP          = g++
 # SUPERLU_DIR and UMFPACK_DIR must be set to ARPACKPP_INC.
 
 #ARPACKPP_DIR = $(HOME)/arpack++
-ARPACKPP_DIR = ../../..
+ARPACKPP_DIR = /teamspace/studios/this_studio/arpackpp
 ARPACKPP_INC = $(ARPACKPP_DIR)/include
 SUPERLU_DIR  = $(ARPACKPP_INC)
 UMFPACK_DIR  = $(ARPACKPP_INC)
@@ -34,10 +34,10 @@ UMFPACK_DIR  = $(ARPACKPP_INC)
 # Other libraries should be defined if the user intends to compile
 # arpack++ on another environment.
 
-ARPACK_LIB   = -larpack
-LAPACK_LIB   = -llapack
-SUPERLU_LIB  = -lsuperlu
-BLAS_LIB     = -lblas
+ARPACK_LIB   = $(ARPACKPP_DIR)/external/arpack-ng-build/lib/libarpack.so
+LAPACK_LIB   = 
+SUPERLU_LIB  = $(ARPACKPP_DIR)/external/libsuperlu.a
+BLAS_LIB     = $(ARPACKPP_DIR)/external/libopenblas.a
 FORTRAN_LIBS = -lgfortran
 
 # SuiteSparse contains the UMFPACK and CHOLMOD code. To link examples against 
@@ -67,7 +67,7 @@ CHOLMOD_INC  = -I$(SUITESPARSE_DIR)/CHOLMOD/Include -I$(SUITESPARSE_DIR)/SuiteSp
 # Defining g++ flags and directories.
 
 # CPP_WARNINGS = -fpermissive 
-CPP_WARNINGS = -Wall -ansi -pedantic-errors
+CPP_WARNINGS = -Wall
 CPP_DEBUG    = -g
 CPP_OPTIM    = -O
 CPP_LIBS     = 
